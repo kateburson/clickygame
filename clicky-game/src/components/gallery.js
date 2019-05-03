@@ -1,5 +1,5 @@
 import React from "react";
-import "./gallery.css";
+import "./gallery.css"
 
 function Gallery(props) {
   return(
@@ -8,6 +8,7 @@ function Gallery(props) {
       src={props.src}
       key={props.id}
       alt={props.alt}
+      onClick={props.onClick}
       ></img>
     </div>
   )

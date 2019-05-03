@@ -7,15 +7,12 @@ import Gallery from "./components/gallery";
 class App extends React.Component {
 
   state = {
-    clicked: false
-  }
+    images: images,
+    // selected: [], // indexes which have been selected
+    score: 0
+  };
 
-  handleClick = (id) => {
-    let clicked = [];
-    clicked.push(id);
-  }
-
-  shuffle = (array) => {
+  shuffleImages = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
   
     // While there remain elements to shuffle...
@@ -30,19 +27,22 @@ class App extends React.Component {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-    return array;
+    this.setState({images: array}); 
   }
+
 
   render() {
     return (
       <div className="wrapper">
-      <Header />
-      {this.shuffle(images).map(i => <Gallery 
+      <Header 
+        score={this.state.score}
+      />
+      {this.state.images.map(i => <Gallery 
         src={i.src}
         key={i.id} 
         id={i.id}
         alt={i.alt}
-        onClick={() => this.handleClick(i.id)}
+        onClick={() => this.shuffleImages(images)}
       />)}
       </div>
     );
