@@ -7,6 +7,7 @@ function Gallery(props) {
       <img 
       src={props.src}
       key={props.id}
+      clicked={props.clicked}
       alt={props.alt}
       onClick={props.onClick}
       ></img>

@@ -9,8 +9,16 @@ class App extends React.Component {
   state = {
     images: images,
     // selected: [], // indexes which have been selected
-    score: 0
+    score: 0,
+    selected: [] 
   };
+
+  handleClick = (array, key) => {
+    console.log(this.state.selected, key);
+    this.state.selected.indexOf(key) === -1 ? this.state.score++ : this.gameOver();
+    this.state.selected.push(key);
+    this.shuffleImages(array);
+  }
 
   shuffleImages = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -30,6 +38,12 @@ class App extends React.Component {
     this.setState({images: array}); 
   }
 
+  gameOver() {
+    alert("Game Over");
+    this.setState({score: 0});
+    this.setState({selected: []});
+  }
+
 
   render() {
     return (
@@ -40,9 +54,8 @@ class App extends React.Component {
       {this.state.images.map(i => <Gallery 
         src={i.src}
         key={i.id} 
-        id={i.id}
         alt={i.alt}
-        onClick={() => this.shuffleImages(images)}
+        onClick={() => this.handleClick(images, i.id)}
       />)}
       </div>
     );
