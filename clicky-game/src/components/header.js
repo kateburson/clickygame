@@ -1,10 +1,9 @@
-import React from 'react'
-import { Header } from 'semantic-ui-react'
+import React from 'react';
 
 const HeaderExamplePage = (props) => (
-  <div>
-    <Header as='h1'>Clicky Game</Header>
-    <Header as='h2'>Score: {props.score}</Header>
+  <div className="header">
+    <h1>Clicky Game With Plants</h1>
+    <h2>Score: {props.score}</h2>
   </div>
 )
 

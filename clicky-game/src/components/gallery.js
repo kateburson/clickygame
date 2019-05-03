@@ -1,9 +1,8 @@
 import React from "react";
-import "./gallery.css"
 
 function Gallery(props) {
   return(
-    <div className="img-container">
+    <div className="content">
       <img 
       src={props.src}
       key={props.id}
